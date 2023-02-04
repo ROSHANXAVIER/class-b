@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $.ajax({
+        type: "GET",
+        url: "http://localhost:3000/get_name",
+        data: {}
+        }).done(function( msg ) {
+            document.getElementById("name").innerText=msg;
+        });
+        
+        $(document).ready(function () {
+        $("#getValBtnID").click(function (event) {
+            event.preventDefault();
+            var inputString = $("#userInputID").val();
+            $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/post_name",
+            data: { name: inputString }
+            }).done(function( msg ) {
+               document.getElementById("age").innerText=msg;
+            });
+        });
+        });
+    </script>
+    <style>
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      form {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0px 0px 10px 0px #333;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        border-radius: 0.5rem;
+        border: none;
+        outline: none;
+      }
+
+      input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+      }
+      #name{
+        text-align: center;
+      }
+
+      #age{
+        font-size: 40px;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="name"> </h1>
+    <div class="form-container">
+      <form>
+        <input type="text" placeholder="Name" required  id="userInputID"/>
+        <br></br>
+        <br></br>
+        <div id="age"> </div>
+        <br></br>
+        <input type="submit" value="Send" id="getValBtnID"/>
+      </form>
+    </div>
+  </body>
+</html>
