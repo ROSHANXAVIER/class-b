@@ -1,5 +1,6 @@
 /////////////////////////////////////////////
 
+//SAJI
 const express=require("express");
 const cors=require('cors');
 const bodyParser=require('body-parser')
@@ -9,6 +10,8 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(cors({origin: true, credentials: true}))
 //////////////////////////////////////////////
 
+
+//DONEY
 const mongoose=require("mongoose");
 mongoose.set("strictQuery", false)
 mongoose.connect("mongodb://localhost:27017/final",{
@@ -26,7 +29,6 @@ const newSchema=new mongoose.Schema({
     title:String,
 },{collection:'final_class'});
 const mongos = mongoose.model("final_class_model", newSchema);
-
 ////////////////////////////////////////////
 
 
@@ -42,7 +44,11 @@ app.post('/post_name',async(req,res)=>{
     let age_of_person=String(result.age);
     res.send(age_of_person);
 })
+//////////////////////////////////////////////
 
+
+/////////////////////////////////////////////
+////SAJI
 app.listen(3000, function(){
     console.log("App is running on Port 3000");
 });
